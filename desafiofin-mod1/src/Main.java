@@ -12,9 +12,9 @@ public class Main {
         double alturaPaciente, kgPaciente;
         int idadePacientes18a25 = 0;
         double mediaH;
-        int qtdH = 0;
+        double qtdH = 0;
         ArrayList<Integer> idadePacientesH = new ArrayList<>();
-        int somaIdadesH = 0;
+        double somaIdadesH = 0;
         double mediaIdadeH =0;
 
         while(true){
