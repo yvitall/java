@@ -1,0 +1,69 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String namePaciente;
+        char sexoPaciente;
+        int qtdPacientes = 0, idadePaciente, escolha1;
+        double alturaPaciente, kgPaciente;
+        int idadePacientes18a25 = 0;
+        double mediaH;
+        int qtdH = 0;
+        ArrayList<Integer> idadePacientesH = new ArrayList<>();
+        int somaIdadesH = 0;
+        double mediaIdadeH =0;
+
+        while(true){
+            System.out.print("----- CLÍNICA TASGC -----\n1.Digite 1 para cadastrar um paciente novo\n2.Digite 0 para encerrar cadastros e receber relatório de todos pacientes\n");
+            escolha1 = input.nextInt();
+            input.nextLine();
+
+            if (escolha1 == 1) {
+
+                System.out.print("Digite o nome do paciente: ");
+                namePaciente = input.nextLine();
+
+                System.out.print("Qual o sexo: ");
+                sexoPaciente = input.next().charAt(0);
+                if  (sexoPaciente == 'm' || sexoPaciente == 'M') {
+                    qtdH += 1;
+                }
+
+                System.out.print("Qual idade do paciente: ");
+                idadePaciente = input.nextInt();
+                if (idadePaciente >= 18 && idadePaciente <= 25) {
+                    idadePacientes18a25 += 1;
+                }
+                if (sexoPaciente == 'm'||sexoPaciente == 'M') {
+                    idadePacientesH.add(idadePaciente);
+                    somaIdadesH += idadePaciente;
+                    }
+
+
+                System.out.print("Digite altura do paciente: ");
+                alturaPaciente = input.nextDouble();
+
+                System.out.print("Digite o peso do paciente: ");
+                kgPaciente = input.nextDouble();
+
+                System.out.print("Paciente cadastrado!\n");
+
+                qtdPacientes += 1;
+                if (qtdH > 0) {
+                    mediaIdadeH = somaIdadesH / qtdH;
+                }
+            } else if (escolha1 == 0) {
+                System.out.print("----- RELATÓRIO GERAL -----\n");
+                System.out.print("Quantidade de Pacientes: " + qtdPacientes +"\n");
+                System.out.print("Quantidade Pacientes com idades entre 18 - 25: " + idadePacientes18a25 +"\n");
+                System.out.print("Quantidade de Pacientes Homens: " + qtdH +"\nMédia de idades dos pacientes homens: " + mediaIdadeH + "\n");
+                break;
+            }
+
+        }
+    }
+}
