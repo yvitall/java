@@ -16,9 +16,11 @@ public class Main {
         ArrayList<Integer> idadePacientesH = new ArrayList<>();
         double somaIdadesH = 0;
         double mediaIdadeH =0;
+        double qtdMulheresKgAlt = 0;
+        String hVelho;
 
         while(true){
-            System.out.print("----- CLÍNICA TASGC -----\n1.Digite 1 para cadastrar um paciente novo\n2.Digite 0 para encerrar cadastros e receber relatório de todos pacientes\n");
+            System.out.print("----- CLÍNICA TASGC -----\n1.Digite 1 para cadastrar um paciente novo\n2.Digite 0 para encerrar cadastros e receber relatório geral\n");
             escolha1 = input.nextInt();
             input.nextLine();
 
@@ -43,12 +45,17 @@ public class Main {
                     somaIdadesH += idadePaciente;
                     }
 
-
                 System.out.print("Digite altura do paciente: ");
                 alturaPaciente = input.nextDouble();
 
                 System.out.print("Digite o peso do paciente: ");
                 kgPaciente = input.nextDouble();
+                if ((sexoPaciente == 'f' || sexoPaciente == 'F')
+                        && kgPaciente > 70
+                        && alturaPaciente > 1.60
+                        && alturaPaciente < 1.70) {
+                    qtdMulheresKgAlt += 1;
+                }
 
                 System.out.print("Paciente cadastrado!\n");
 
@@ -61,6 +68,8 @@ public class Main {
                 System.out.print("Quantidade de Pacientes: " + qtdPacientes +"\n");
                 System.out.print("Quantidade Pacientes com idades entre 18 - 25: " + idadePacientes18a25 +"\n");
                 System.out.print("Quantidade de Pacientes Homens: " + qtdH +"\nMédia de idades dos pacientes homens: " + mediaIdadeH + "\n");
+                System.out.print("Mulheres com altura > 1.60 e < 1.70 com + 70kg: " + qtdMulheresKgAlt +"\n");
+                System.out.println("O paciente Homem mais velho é: " + hVelho);
                 break;
             }
 
